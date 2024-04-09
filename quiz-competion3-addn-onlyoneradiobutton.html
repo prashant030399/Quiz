@@ -1,0 +1,200 @@
+<script>
+    var q=["1) pm of india","2) 2+4","3)3*6","4)Presi of India","5)captain of Indian Cricket","6)shark of India","7)eam of India","8)56+56","9) si unit of current ","10)badshah of bollywood"]
+var op1=["modi","80","30","patil","rohit","vijay","tharoor","111","ampere","salman"]
+var op2=["gandhi","70","18","Kalam","kohli","anup","S jaishankar","113","joule","akshay"]
+var op3=["kejriwal","19","78","Murmu","dhoni","arun","Salman khurshid","112","newton","amir"]
+var op4=["kharge","6","22","ajay","jadeja","anupam mittal","rajesh khanna","114","pascal","srk"]
+var ans=[1,4,2,3,1,4,2,3,1,4];
+
+var rans,index=0;
+
+
+function show(v)
+{
+    rans=ans[v];
+    index=v;
+    document.getElementById("q").innerHTML=q[v];
+    document.getElementById("op1").innerHTML="<input type='radio'  name='x'   id='a' value='1' >" + op1[v];
+    document.getElementById("op2").innerHTML="<input type='radio'  name='x'   id='b' value='2' >" + op2[v];
+    document.getElementById("op3").innerHTML="<input type='radio'  name='x'   id='c' value='3' >" + op3[v];
+    document.getElementById("op4").innerHTML="<input type='radio'  name='x'   id='d' value='4' >" + op4[v];
+
+}
+
+var c=[0,0,0,0,0,0,0,0,0,0];
+
+function submit()
+{
+
+    var q;
+    if(document.getElementById("a").checked)
+    {
+        q=document.getElementById("a").value;
+    }
+    if(document.getElementById("b").checked)
+    {
+        q=document.getElementById("b").value;
+    }
+    if(document.getElementById("c").checked)
+    {
+        q=document.getElementById("c").value;
+    }
+    if(document.getElementById("d").checked)
+    {
+        q=document.getElementById("d").value;
+    }
+    if(q==rans)
+    {
+       c[index]=1;
+    }  
+    else
+    {
+        c[index]=0;
+    }
+    document.getElementById("ans").innerHTML="ans submitted";
+    
+}
+
+
+function finish()
+{
+var s=0;
+for(i=0;i<c.length;i++)
+{
+    s=s+c[i];
+}
+
+    document.getElementById("ans").innerHTML=s+"/10";
+}
+
+
+    var m=0 , s=59;
+var p=setInterval( 
+function()
+{
+    document.getElementById("x").innerHTML="timeleft"+m+":"+s;
+
+    s--;
+    if(s==-1)
+    {
+s=59;
+m--;
+if(m==-1)
+{
+clearInterval(p);
+document.getElementById("x1").style.visibility="hidden";
+}
+    }
+   
+
+},1000
+)
+
+
+
+
+
+function next()
+{
+if(index==9)
+{
+index=0;
+}
+else
+{
+index++;
+}
+document.getElementById("q").innerHTML=q[index];
+document.getElementById("op1").innerHTML="<input type=radio>" + op1[index];
+document.getElementById("op2").innerHTML="<input type=radio>"+  op2[index];
+document.getElementById("op3").innerHTML="<input type=radio>" + op3[index];
+document.getElementById("op4").innerHTML="<input type=radio>" + op4[index];
+
+
+
+}
+function prev()
+{
+if(index==0)
+{
+index=9;
+}
+else
+{
+index--;
+}
+document.getElementById("q").innerHTML=q[index];
+document.getElementById("op1").innerHTML="<input type=radio>" +op1[index];
+document.getElementById("op2").innerHTML="<input type=radio>" + op2[index];
+document.getElementById("op3").innerHTML="<input type=radio>" + op3[index];
+document.getElementById("op4").innerHTML="<input type=radio>" + op4[index];
+
+
+
+}
+
+
+
+
+</script>
+<body>
+    <div id="x1">
+<ul>
+ 
+
+   
+ 
+
+<input type="button" value="1" onclick="show(0)" >
+<input type="button" value="2"  onclick="show(1)"  >
+<input type="button" value="3"  onclick="show(2)"  >
+<input type="button" value="4"  onclick="show(3)"  >
+<input type="button" value="5"  onclick="show(4)"  >
+<input type="button" value="6"  onclick="show(5)"  >
+<input type="button" value="7"  onclick="show(6)"  >
+<input type="button" value="8"  onclick="show(7)"  >
+<input type="button" value="9"  onclick="show(8)"  >
+<input type="button" value="10"   onclick="show(9)" >
+<input type="button" value="submit"   onclick="submit()" >
+
+<input type="button" value="next" onclick="next()">
+<input type="button" value="prev" onclick="prev()">
+<input type="button" value="finish"   onclick="finish()">
+
+
+
+
+
+
+<p id="q"></p>
+<p id="op1"></p>
+<p id="op2"></p>
+<p id="op3"></p>
+<p id="op4"></p>
+<p id="ans"></p>
+
+<p id="x"></p>
+
+
+
+<p id="a"></p>
+<p id="b"></p>
+<p id="c"></p>
+<p id="d"></p>
+
+
+
+
+
+
+</ul>
+</div>
+
+
+
+
+
+
+
+
+</body>
